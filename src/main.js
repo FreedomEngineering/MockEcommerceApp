@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const Root = () => {
-  return <h1>Whoa</h1>;
-};
+import Root from "./components/Root";
 
 ReactDOM.render(<Root />, document.getElementById("root"));
