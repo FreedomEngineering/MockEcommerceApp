@@ -4,10 +4,14 @@ import Product from "./Product";
 
 const ProductsArea = () => {
   return (
-    <div id="productsArea">
-      Products Area
-      <Product />
-      <Product />
+    <div id="productsArea" className="container">
+      <div className="card-columns">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+      </div>
     </div>
   );
 };
