@@ -1,36 +1,45 @@
 import React from "react";
+import { v4 } from "uuid";
 
 import Product from "./Product";
 
-const hdmiCable = {
-  name: "HDMI Cable",
-  image: "https://via.placeholder.com/200",
-  price: "10.99",
-  shortDescription: "A useful cable",
-  longDescription: "This cable is HDMI. It is very useful. So great, much fun."
-};
+const productsList = [
+  {
+    id: v4(),
+    name: "HDMI Cable",
+    image: "https://via.placeholder.com/200",
+    price: "10.99",
+    shortDescription: "A useful cable",
+    longDescription:
+      "This cable is HDMI. It is very useful. So great, much fun."
+  },
+  {
+    id: v4(),
+    name: "Speakers",
+    image: "https://via.placeholder.com/200",
+    price: "29.97",
+    shortDescription: "A set of nice speakers",
+    longDescription:
+      "Speakers are great and make sounds louder. Great value, such sound."
+  }
+];
 
 const ProductsArea = () => {
   return (
     <div id="productsArea" className="container">
       <div className="card-columns">
-        <Product
-          name={hdmiCable.name}
-          image={hdmiCable.image}
-          price={hdmiCable.price}
-          shortDescription={hdmiCable.shortDescription}
-          longDescription={hdmiCable.longDescription}
-        />
-        <Product
-          name="Speakers"
-          image="https://via.placeholder.com/200"
-          price="29.97"
-          shortDescription="A set of nice speakers"
-          longDescription="Speakers are great and make sounds louder. Great value, such sound."
-        />
-        <Product />
-        <Product />
-        <Product />
+        {productsList.map(product => {
+          return (
+            <Product
+              key={product.id}
+              name={product.name}
+              image={product.image}
+              price={product.price}
+              shortDescription={product.shortDescription}
+              longDescription={product.longDescription}
+            />
+          );
+        })}
       </div>
     </div>
   );
