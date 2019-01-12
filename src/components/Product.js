@@ -16,7 +16,7 @@ const Product = props => {
         <h5 className="card-title">{name}</h5>
         <h6 className="card-subtitle mb-2 text-muted">{price}</h6>
         <p className="card-text">{shortDescription}</p>
-        <ModalButton />
+        <ModalButton product={props} />
       </div>
     </div>
   );
