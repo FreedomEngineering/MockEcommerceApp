@@ -1,14 +1,14 @@
 import React from "react";
 
 export const ModalButton = props => {
-  const { product } = props;
+  const { handleModalButtonClick } = props;
   return (
     <button
       type="button"
       className="btn btn-primary"
       data-toggle="modal"
       data-target="#productModal"
-      onClick={() => console.log("modal clicked", product)}
+      onClick={handleModalButtonClick}
     >
       Launch demo modal
     </button>
