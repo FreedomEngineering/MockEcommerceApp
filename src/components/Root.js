@@ -8,7 +8,9 @@ class Root extends Component {
   constructor(props) {
     super(props);
     this.onModalButtonClick = this.onModalButtonClick.bind(this);
-    this.state = {};
+    this.state = {
+      modalProduct: {}
+    };
   }
 
   onModalButtonClick(product) {
@@ -19,11 +21,13 @@ class Root extends Component {
 
   render() {
     console.log("state", this.state);
+    const { modalProduct } = this.state;
+    console.log("root, modalProduct", modalProduct);
     return (
       <div id="homePage">
         <Callout />
         <ProductsArea onModalButtonClick={this.onModalButtonClick} />
-        <Modal />
+        <Modal product={modalProduct} />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 } from "uuid";
 
 export const ModalButton = props => {
   const { handleModalButtonClick } = props;
@@ -15,7 +16,18 @@ export const ModalButton = props => {
   );
 };
 
-const Modal = () => {
+const Modal = props => {
+  console.log("modal, props:", props);
+  const { product } = props;
+
+  const longDescription =
+    product.longDescription &&
+    product.longDescription.split("\n").map(desc => (
+      <p key={v4()} className="text-justify">
+        {desc}
+      </p>
+    ));
+
   return (
     <div
       className="modal fade"
@@ -31,9 +43,6 @@ const Modal = () => {
       >
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="productModalTitle">
-              Modal title
-            </h5>
             <button
               type="button"
               className="close"
@@ -49,15 +58,15 @@ const Modal = () => {
                 <div className="col-md-12 col-lg-6">
                   <img
                     className="img-fluid rounded mx-auto d-block p-3"
-                    src="https://via.placeholder.com/200"
+                    src={product.image}
                     alt="Card image cap"
                   />
                 </div>
                 <div className="col-md-12 col-lg-6">
-                  <h1>Product name</h1>
-                  <h6>Price</h6>
+                  <h1>{product.name}</h1>
+                  <h6>{product.price}</h6>
                   <hr />
-                  <h4>Short Description</h4>
+                  <h4>{product.shortDescription}</h4>
                   <button className="btn btn-block btn-primary">
                     Add To Cart
                   </button>
@@ -66,22 +75,11 @@ const Modal = () => {
               <hr />
               <div className="row">
                 <div className="col">
-                  <h3>Long Description</h3>
+                  <h3>Product Description</h3>
+                  {longDescription}
                 </div>
               </div>
             </div>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" className="btn btn-primary">
-              Save changes
-            </button>
           </div>
         </div>
       </div>
