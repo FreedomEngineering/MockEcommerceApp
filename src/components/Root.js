@@ -8,9 +8,27 @@ class Root extends Component {
   constructor(props) {
     super(props);
     this.onModalButtonClick = this.onModalButtonClick.bind(this);
+    this.handleCartButtonClick = this.handleCartButtonClick.bind(this);
     this.state = {
-      modalProduct: {}
+      modalProduct: {},
+      cart: []
     };
+  }
+
+  handleCartButtonClick(id) {
+    const { cart } = this.state;
+
+    const index = cart.indexOf(id);
+    const isProductInCart = index > -1;
+
+    let newCart;
+    if (isProductInCart) {
+      newCart = cart.slice(0, index).concat(cart.slice(index + 1));
+    } else {
+      newCart = cart.concat(id);
+    }
+
+    this.setState({ cart: newCart });
   }
 
   onModalButtonClick(product) {
@@ -20,14 +38,16 @@ class Root extends Component {
   }
 
   render() {
-    console.log("state", this.state);
-    const { modalProduct } = this.state;
-    console.log("root, modalProduct", modalProduct);
+    const { modalProduct, cart } = this.state;
     return (
       <div id="homePage">
         <Callout />
         <ProductsArea onModalButtonClick={this.onModalButtonClick} />
-        <Modal product={modalProduct} />
+        <Modal
+          product={modalProduct}
+          cart={cart}
+          handleCartButtonClick={this.handleCartButtonClick}
+        />
       </div>
     );
   }

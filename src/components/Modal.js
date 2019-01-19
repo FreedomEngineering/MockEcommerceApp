@@ -17,8 +17,10 @@ export const ModalButton = props => {
 };
 
 const Modal = props => {
-  console.log("modal, props:", props);
-  const { product } = props;
+  const { product, handleCartButtonClick, cart } = props;
+  console.log("cart", cart);
+
+  const isItemInCart = cart.indexOf(product.id) > -1;
 
   const longDescription =
     product.longDescription &&
@@ -67,8 +69,13 @@ const Modal = props => {
                   <h6>{product.price}</h6>
                   <hr />
                   <h4>{product.shortDescription}</h4>
-                  <button className="btn btn-block btn-primary">
-                    Add To Cart
+                  <button
+                    className={`btn btn-block btn-${
+                      isItemInCart ? "warning" : "primary"
+                    }`}
+                    onClick={() => handleCartButtonClick(product.id)}
+                  >
+                    {isItemInCart ? "Remove From Cart" : "Add To Cart"}
                   </button>
                 </div>
               </div>
