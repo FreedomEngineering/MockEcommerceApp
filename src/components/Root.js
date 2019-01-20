@@ -9,9 +9,13 @@ class Root extends Component {
     super(props);
     this.onModalButtonClick = this.onModalButtonClick.bind(this);
     this.handleCartButtonClick = this.handleCartButtonClick.bind(this);
+
+    const serializedCart = window.localStorage.getItem("cart");
+    const cart = serializedCart ? JSON.parse(serializedCart) : [];
+
     this.state = {
       modalProduct: {},
-      cart: []
+      cart
     };
   }
 
@@ -28,7 +32,9 @@ class Root extends Component {
       newCart = cart.concat(id);
     }
 
-    this.setState({ cart: newCart });
+    this.setState({ cart: newCart }, () => {
+      window.localStorage.setItem("cart", JSON.stringify(newCart));
+    });
   }
 
   onModalButtonClick(product) {
