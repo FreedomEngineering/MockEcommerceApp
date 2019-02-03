@@ -14,13 +14,13 @@ const Product = props => {
     <div className="card product">
       <div className="card-body">
         <img
-          className="shadow rounded img-thumbnail"
+          className="shadow rounded img-thumbnail mx-auto d-block"
           src={image}
           alt="Card image cap"
         />
         <hr />
         <h5 className="card-title">{name}</h5>
-        <h6 className="card-subtitle mb-2 text-muted">{price}</h6>
+        <h6 className="card-subtitle mb-2 text-muted">${price}</h6>
         <p className="card-text">{shortDescription}</p>
         <ModalButton handleModalButtonClick={handleModalButtonClick} />
       </div>

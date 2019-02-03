@@ -4,11 +4,8 @@ const Callout = () => {
   return (
     <div id="largeCallout" className="jumbotron jumbotron-fluid">
       <div className="container">
-        <h1 className="display-3">Fluid jumbotron</h1>
-        <p className="lead">
-          This is a modified jumbotron that occupies the entire horizontal space
-          of its parent.
-        </p>
+        <h1 className="display-3">Buy Now</h1>
+        <p className="lead">Great products for your life.</p>
       </div>
     </div>
   );

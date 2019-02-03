@@ -6,19 +6,18 @@ export const ModalButton = props => {
   return (
     <button
       type="button"
-      className="btn btn-primary"
+      className="btn btn-outline-primary"
       data-toggle="modal"
       data-target="#productModal"
       onClick={handleModalButtonClick}
     >
-      Launch demo modal
+      View Details
     </button>
   );
 };
 
 const Modal = props => {
   const { product, handleCartButtonClick, cart } = props;
-  console.log("cart", cart);
 
   const isItemInCart = cart.indexOf(product.id) > -1;
 
@@ -59,14 +58,14 @@ const Modal = props => {
               <div className="row">
                 <div className="col-md-12 col-lg-6">
                   <img
-                    className="img-fluid rounded mx-auto d-block p-3"
+                    className="img-fluid rounded shadow mx-auto d-block p-3"
                     src={product.image}
                     alt="Card image cap"
                   />
                 </div>
                 <div className="col-md-12 col-lg-6">
                   <h1>{product.name}</h1>
-                  <h6>{product.price}</h6>
+                  <h6>${product.price}</h6>
                   <hr />
                   <h4>{product.shortDescription}</h4>
                   <button
